@@ -4,7 +4,11 @@ import _ from 'lodash';
 
 const Modal = ({ tabs, selectedTab, addTab, isModalOpen, saveText, setSelectedTab, deleteTab, toggleModal }) => {
     const getPreviewText = text => {
-        return text ? text.slice(0, 40) + '...' : '';
+        const preview = text ? text.slice(0, 40) : '';
+        if (preview.length >= 40) {
+            return preview.concat('...');
+        }
+        return preview;
     };
 
     const listView = tabs.map(tab =>

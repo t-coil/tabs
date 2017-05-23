@@ -4,7 +4,7 @@ module.exports = {
     devtool: 'exac-source-map',
     entry: './app/index.js',
     output: {
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'tabs'),
         filename: 'bundle.js',
         pathinfo: true
     },
