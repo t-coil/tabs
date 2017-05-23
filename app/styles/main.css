@@ -52,6 +52,9 @@ button {
 
 .open-button:hover {
 	background-color: #E37222;
+	height: 150px;
+	width: 150px;
+	border-radius: 40px;
 }
 
 .tab-number {
