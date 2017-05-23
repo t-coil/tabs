@@ -2,10 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Landing = ({ tabsLength, toggleModal }) => {
+    const tabNumber = tabsLength > 0 ? (
+        <div className="tab-number">{tabsLength} Tabs</div>
+    ) : null;
+
     return (
         <div className="landing-container">
-            <button onClick={toggleModal}>Open</button>
-            {tabsLength}
+            <button className="open-button" onClick={toggleModal}>Open</button>
+            {tabNumber}
         </div>
     );
 };

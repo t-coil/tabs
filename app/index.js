@@ -5,6 +5,8 @@ import { createStore } from 'redux';
 import state from './reducers';
 import App from './App';
 
+import './styles/main.css';
+
 const store = createStore(state);
 
 render(

@@ -1,12 +1,166 @@
+@font-face {
+    font-family: 'Barrio';
+    src: url('./assets/Barrio/Barrio-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Slabo';
+    src: url('./assets/Slabo_27px/Slabo27px-Regular.ttf');
+}
+
 html, body, div {
 	margin: 0;
 	padding: 0;
+	height: 100%;
 	width: 100%;
+}
+
+body {
+	background-color: #d7dddb;
+}
+
+button {
+	border-style: none;
+	box-shadow: none;
+	text-decoration: none;
+	border: none;
+	outline: none;
+}
+
+.landing-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+}
+
+.open-button {
+	height: 100px;
+	width: 100px;
+	border-radius: 10px;
+	background-color: #E37222;
+	font-family: 'Barrio';
+	font-size: 35px;
+}
+
+.open-button:focus {
+	outline: none;
+}
+
+.tab-number {
+	width: 10%;
+	height: 10%;
+	text-align: center;
+	padding: 20px;
+	font-family: 'Slabo';
+	font-size: 20px;
 }
 
 .modal {
 	position: fixed;
-	z-index: 1;
-	width: 60%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+}
+
+.modal-content {
 	height: 80%;
+	width: 60%;
+	display: flex;
+	background-color: #66B9BF;
+	border-radius: 10px;
+	position: relative;
+}
+
+.tab-list {
+	width: 30%;
+	list-style: none;
+	overflow: auto;
+	padding: 0;
+	margin: 0;
+	font-family: 'Slabo';
+}
+
+li {
+	height: 10%;
+	overflow: hidden;
+	padding: 0 20px;
+	display: flex;
+	font-size: 30px;
+}
+
+li:hover {
+	background-color: #07889B;
+}
+
+.text-box {
+	width: 70%;
+}
+
+textarea {
+	height: 100%;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;  
+	font-family: 'Slabo';
+	font-size: 20px;
+	background-color: #f1f3f3;
+	padding: 20px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-color: #66B9BF;
+}
+
+textarea:focus {
+	outline: none;
+}
+
+.delete-button {
+	color: #E37222;
+	background-color: transparent;
+	font-size: 15px;
+	width: 20%;
+	text-align: right;
+	transition: all 0.25s ease-in-out;
+}
+
+.delete-button:hover {
+	font-size: 25px;
+}
+
+.tab-name {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: left;
+	width: 80%;
+}
+
+.add-tab-button {
+	background-color: #EEAA7B;
+	font-family: 'Barrio';
+	font-size: 30px;
+}
+
+.modal-closer {
+	top: 2px;
+	right: 2px;
+	font-size: 20px;
+	border-top-right-radius: 10px;
+	position: absolute;
+	background-color: transparent;
+	transition: all 0.25s ease-in-out;
+}
+
+.modal-closer:hover {
+	font-size: 30px;
+	color: #E37222;
 }

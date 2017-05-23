@@ -1,43 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 
-const Modal = ({ tabs, selectedTab, isModalOpen }) => {
+const Modal = ({ tabs, selectedTab, addTab, isModalOpen, saveText, setSelectedTab, deleteTab, toggleModal }) => {
     const listView = tabs.map(tab =>
-        <li>
-            {tab.id}
-            <button>Delete Me!</button>
+        <li key={tab.id} onClick={() => setSelectedTab(tab.id)}>
+            <div className="tab-name">{tab.id}</div>
+            <button className="delete-button" onClick={() => deleteTab(tab.id)}>x</button>
         </li>
     );
 
-    const modalView = (
+    const textBox = selectedTab ? (
+                <textarea value={_.get(_.find(tabs, { id: selectedTab }), 'text', '')} onChange={event => saveText(selectedTab, event.target.value)} />
+        ) : null;
+
+    const modalView = isModalOpen ? (
         <div className="modal">
-            Here is your list yo
-            <ul>
-                {listView}
-            </ul>
-            <button onClick={addTab}>Add Tab</button>
-            <div>
-                <textarea></textarea>
+            <div className="modal-content">
+                <ul className="tab-list">
+                    {listView}
+                </ul>
+                <button className="add-tab-button" onClick={() => addTab(tabs)}>Add Tab</button>
+                <div className="text-box">
+                    <button className="modal-closer" onClick={toggleModal}>x</button>
+                    {textBox}
+                </div>
             </div>
         </div>
-    );
+    ) : null;
 
-    if (isModalOpen) {
-        return modalView;
-    } else {
-        return null;
-    }
-
+    return modalView;
 };
 
 Modal.propTypes = {
     tabs: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
         text: PropTypes.string.isRequired
     })).isRequired,
     selectedTab: PropTypes.string.isRequired,
     isModalOpen: PropTypes.bool.isRequired,
-    addTab: PropTypes.func.isRequired
+    addTab: PropTypes.func.isRequired,
+    saveText: PropTypes.func.isRequired,
+    setSelectedTab: PropTypes.func.isRequired,
+    deleteTab: PropTypes.func.isRequired,
+    toggleModal: PropTypes.func.isRequired
 };
 
 export default Modal;
