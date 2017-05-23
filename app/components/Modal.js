@@ -3,9 +3,14 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 const Modal = ({ tabs, selectedTab, addTab, isModalOpen, saveText, setSelectedTab, deleteTab, toggleModal }) => {
+    const getPreviewText = text => {
+        return text ? text.slice(0, 40) + '...' : '';
+    };
+
     const listView = tabs.map(tab =>
         <li key={tab.id} onClick={() => setSelectedTab(tab.id)}>
             <div className="tab-name">{tab.id}</div>
+            <div className="preview-text">{getPreviewText(tab.text)}</div>
             <button className="delete-button" onClick={() => deleteTab(tab.id)}>x</button>
         </li>
     );
