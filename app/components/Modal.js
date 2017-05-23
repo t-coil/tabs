@@ -8,16 +8,18 @@ const Modal = ({ tabs, selectedTab, addTab, isModalOpen, saveText, setSelectedTa
     };
 
     const listView = tabs.map(tab =>
-        <li key={tab.id} onClick={() => setSelectedTab(tab.id)}>
-            <div className="tab-name">{tab.id}</div>
-            <div className="preview-text">{getPreviewText(tab.text)}</div>
-            <button className="delete-button" onClick={() => deleteTab(tab.id)}>x</button>
+        <li key={tab.id}>
+            <div className="li-container" onClick={() => setSelectedTab(tab.id)}>
+                <div className="tab-name">{tab.id}</div>
+                <div className="preview-text">{getPreviewText(tab.text)}</div>
+            </div>
+            <button className="delete-button" onClick={() => deleteTab(tab.id, selectedTab)}>x</button>
         </li>
     );
 
-    const textBox = selectedTab ? (
+    const textBox = selectedTab !== 'no_tab' ? (
                 <textarea value={_.get(_.find(tabs, { id: selectedTab }), 'text', '')} onChange={event => saveText(selectedTab, event.target.value)} />
-        ) : null;
+    ) : null;
 
     const modalView = isModalOpen ? (
         <div className="modal">
@@ -42,7 +44,7 @@ Modal.propTypes = {
         id: PropTypes.string.isRequired,
         text: PropTypes.string.isRequired
     })).isRequired,
-    selectedTab: PropTypes.string.isRequired,
+    selectedTab: PropTypes.string,
     isModalOpen: PropTypes.bool.isRequired,
     addTab: PropTypes.func.isRequired,
     saveText: PropTypes.func.isRequired,

@@ -107,6 +107,11 @@ li:hover {
 	background-color: #07889B;
 }
 
+.li-container {
+	width: 80%;
+	display: flex;
+}
+
 .text-box {
 	width: 70%;
 }
@@ -152,7 +157,7 @@ textarea:focus {
 }
 
 .preview-text {
-	width: 60%;
+	width: 80%;
 	font-family: 'Slabo';
 	font-size: 14px;
 	color: #f1f3f3;

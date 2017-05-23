@@ -22,8 +22,10 @@ const mapDispatchToProps = dispatch => {
         },
         saveText: (id, text) => dispatch(saveText(id, text)),
         setSelectedTab: id => dispatch(setSelectedTab(id)),
-        deleteTab: id => {
-            dispatch(setSelectedTab(''));
+        deleteTab: (id, selected) => {
+            if (id === selected) {
+                dispatch(setSelectedTab('no_tab'));
+            }
             dispatch(deleteTab(id));
         }
     };

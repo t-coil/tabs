@@ -5,7 +5,7 @@ const savedModal = JSON.parse(localStorage.getItem('isModalOpen'));
 
 const baseState = {
     tabs: savedTabs || [],
-    selectedTab: savedSelected || '',
+    selectedTab: savedSelected || 'no_tab',
     isModalOpen: savedModal || false
 };
 
